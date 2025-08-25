@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      margin: 40px;
+    }
+
+    #menu {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-item {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .menu-item h3 {
+      margin-top: 0;
+      color: #444;
+    }
+
+    .menu-item p {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h3>Signature Burger</h3>
+        <p>Beef patty, cheddar, house sauce, brioche bun - R220</p>
+      </div>
+      <div class="menu-item">
+        <h3>Grilled Salmon</h3>
+        <p>Lemon butter glaze, seasonal vegetables - R250</p>
+      </div>
+      <div class="menu-item">
+        <h3>Craft Cocktails</h3>
+        <p>Locally inspired spirits and mixers - R180</p>
+      </div>
+      <div class="menu-item">
+        <h3>Caesar Salad</h3>
+        <p>Crisp romaine, parmesan, house dressing - R180</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
