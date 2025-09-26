@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUDSON BAR & GRILL</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:#fff;
+  --accent:#FF6F00;
+  --glass-bg: rgba(255,255,255,0.15);
+  --glass-border: rgba(255,255,255,0.3);
+  --body-font: 'Open Sans', sans-serif;
+  --header-font: 'Playfair Display', serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family: var(--body-font);
+  background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80") no-repeat center center/cover;
+  background-attachment: fixed;
+  color:#fff;
+  line-height:1.6;
+}
+body::before{
+  content:"";
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background: rgba(0,0,0,0.5); z-index:-1;
+}
+header{
+  text-align:center; padding: 20px;
+  background: rgba(0,0,0,0.6); backdrop-filter:blur(6px);
+}
+header h1{font-family: var(--header-font); font-size: 2.5rem;}
+header p{margin-top:5px;color:#ddd;}
+nav{
+  text-align:center; padding:10px; background: rgba(0,0,0,0.6); backdrop-filter:blur(6px);
+  position:sticky; top:0; z-index:999;
+}
+nav a{
+  color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; text-transform:uppercase; font-size:0.9rem;
+  transition: color 0.3s;
+}
+nav a:hover{color: var(--accent);}
+.hero{
+  height:80vh; display:flex; align-items:center; justify-content:center; text-align:center;
+}
+.hero div{
+  background: rgba(0,0,0,0.5); padding:30px; border-radius:12px;
+}
+.hero h2{font-family: var(--header-font); font-size:2.5rem;}
+.hero p{margin:10px 0 20px;}
+.btn{
+  background: var(--accent); color:#fff; padding:12px 24px; border:none;
+  text-transform:uppercase; font-weight:bold; cursor:pointer; transition:0.3s;
+  border-radius:10px;
+}
+.btn:hover{background:#e55d00; transform:scale(1.05);}
+section{padding:50px 20px; max-width:1100px; margin:auto;}
+h2{font-family: var(--header-font); font-size:2rem; margin-bottom:20px; color:#fff;}
+.glass-card{
+  background: var(--glass-bg); border:1px solid var(--glass-border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius:16px; padding:20px; margin-bottom:20px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.glass-card:hover{transform: translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+.menu-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px;
+}
+.menu-item{border-left:5px solid var(--accent);}
+ul{list-style:none; padding:0;}
+ul li{margin-bottom:15px; padding:12px; border-radius:12px; background: rgba(255,255,255,0.15);}
+form{
+  display:grid; gap:15px; max-width:600px; margin:auto;
+}
+input, textarea, select, button{padding:12px; border-radius:10px; border:none; font-family: var(--body-font);}
+button[type="submit"]{background:var(--accent); color:#fff; cursor:pointer; font-weight:bold; text-transform:uppercase; transition:0.3s;}
+button[type="submit"]:hover{background:#e55d00; transform:scale(1.05);}
+footer{background: rgba(0,0,0,0.6); text-align:center; padding:30px; margin-top:50px; border-radius:12px;}
+@media(max-width:768px){nav{font-size:0.85rem;} .hero h2{font-size:2rem;}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>HUDSON BAR & GRILL</h1>
+  <p>Where Flavor Meets the Hudson</p>
+</header>
+
+<nav>
+  <a href="#menu">Menu</a>
+  <a href="#promotions">Promotions</a>
+  <a href="#reservation">Reservations</a>
+  <a href="#order">Order</a>
+  <a href="#blog">Blog</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <h2>Welcome to Hudson Bar & Grill</h2>
+    <p>Modern Cuisine & Craft Cocktails on the River</p>
+    <button class="btn">Explore Menu</button>
+  </div>
+</section>
+
+<section id="menu">
+  <h2>Our Menu</h2>
+  <div class="menu-grid">
+    <div class="glass-card menu-item">
+      <h3>Signature Burger</h3>
+      <p>Beef patty, cheddar, house sauce, brioche bun - R220</p>
+    </div>
+    <div class="glass-card menu-item">
+      <h3>Grilled Salmon</h3>
+      <p>Lemon butter glaze, seasonal vegetables - R250</p>
+    </div>
+    <div class="glass-card menu-item">
+      <h3>Craft Cocktails</h3>
+      <p>Locally inspired spirits and mixers - R180</p>
+    </div>
+    <div class="glass-card menu-item">
+      <h3>Caesar Salad</h3>
+      <p>Crisp romaine, parmesan, house dressing - R180</p>
+    </div>
+  </div>
+</section>
+
+<section id="promotions">
+  <h2>Promotions</h2>
+  <div class="glass-card">
+    <ul>
+      <li><strong>Happy Hour:</strong> 5-7pm – 50% off drinks</li>
+      <li><strong>Brunch:</strong> Free mimosa on weekends</li>
+    </ul>
+  </div>
+</section>
+
+<section id="reservation">
+  <h2>Reserve a Table</h2>
+  <form id="reservationForm" class="glass-card">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <input type="date" required>
+    <input type="time" required>
+    <input type="number" placeholder="Guests" required>
+    <textarea placeholder="Special Requests"></textarea>
+    <button type="submit">Book Now</button>
+  </form>
+</section>
+
+<section id="order">
+  <h2>Order Online</h2>
+  <div class="glass-card" style="text-align:center;">
+    <p>Order via our delivery partners and enjoy at home.</p>
+    <button class="btn" id="showOrderForm">Order Now</button>
+
+    <form id="orderForm" style="display:none; margin-top:20px; text-align:left;">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Phone" required>
+      <textarea placeholder="Delivery Address"></textarea>
+      <select required>
+        <option value="">Select Item</option>
+        <option>Signature Burger</option>
+        <option>Grilled Salmon</option>
+        <option>Craft Cocktail</option>
+        <option>Caesar Salad</option>
+      </select>
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+</section>
+
+<section id="blog">
+  <h2>Latest from the Blog</h2>
+  <div class="glass-card">
+    <article>
+      <h3>Chef's Picks for Fall</h3>
+      <p>Warm up with our seasonal menu, curated by Chef James.</p>
+    </article>
+    <article>
+      <h3>Live Jazz Nights</h3>
+      <p>Join us Fridays at 8pm for smooth music & dining.</p>
+    </article>
+    <form>
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 HUDSON BAR & GRILL. All rights reserved.</p>
+</footer>
+
+<script>
+const reservationForm = document.getElementById('reservationForm');
+reservationForm.addEventListener('submit', e => { e.preventDefault(); alert('Thank you! Your table has been reserved.'); reservationForm.reset(); });
+
+const showOrderBtn = document.getElementById('showOrderForm');
+const orderForm = document.getElementById('orderForm');
+showOrderBtn.addEventListener('click', ()=>{
+  orderForm.style.display = orderForm.style.display==='block'?'none':'block';
+  showOrderBtn.textContent = orderForm.style.display==='block'?'Hide Form':'Order Now';
+});
+orderForm.addEventListener('submit', e=>{
+  e.preventDefault();
+  alert('Thank you! Your order has been placed.');
+  orderForm.reset();
+  orderForm.style.display='none';
+  showOrderBtn.textContent='Order Now';
+});
+</script>
+</body>
+</html>

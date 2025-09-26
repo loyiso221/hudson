@@ -7,61 +7,174 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f4f4f4;
+      margin: 0;
+      background: url("https://picsum.photos/1600/900?blur") no-repeat center center/cover;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
-    .contact-container {
-      background-color: white;
-      padding: 20px 30px;
-      border-radius: 8px;
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 30px 40px;
+      border-radius: 16px;
       max-width: 500px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.3);
+      animation: fadeIn 1s ease-in-out;
     }
+
     h2 {
-      color: #333;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
     }
+
+    form {
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background: rgba(255,255,255,0.7);
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    input:focus {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 0 10px rgba(0,123,255,0.5);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: rgba(0,123,255,0.8);
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(0,86,179,0.9);
+      transform: scale(1.05);
+    }
+
+    .contact-card {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      animation: fadeIn 1s ease-in-out;
+    }
+
     .contact-item {
-      margin: 15px 0;
+      margin: 12px 0;
+      font-size: 1.05rem;
     }
+
     .contact-label {
       font-weight: bold;
-      color: #555;
+      color: #f0f0f0;
+      display: inline-block;
+      width: 85px;
     }
+
     a {
-      color: #007BFF;
+      color: #ffeb3b;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
+
     a:hover {
       text-decoration: underline;
+      color: #ffc107;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <div class="contact-container">
-    <h2>Contact Information</h2>
+  <div class="container">
+    <h2>Enter Your Contact Info</h2>
 
-    <div class="contact-item">
-      <span class="contact-label">Name:</span> Jane Doe
+    <!-- User Input Form -->
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Enter your name" required>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <input type="tel" id="phone" placeholder="Enter your phone number" required>
+      <input type="text" id="address" placeholder="Enter your address" required>
+      <button type="submit">Save Contact Info</button>
+    </form>
+
+    <!-- Contact Info Card -->
+    <div class="contact-card" id="contactCard" style="display:none;">
+      <h2>Contact Information</h2>
+      <div class="contact-item">
+        <span class="contact-label">Name:</span> <span id="displayName"></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Email:</span> <a id="displayEmail"></a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Phone:</span> <a id="displayPhone"></a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Address:</span> <span id="displayAddress"></span>
+      </div>
     </div>
-
-    <div class="contact-item">
-      <span class="contact-label">Email:</span> 
-      <a href="mailto:jane.doe@example.com">jane.doe@example.com</a>
-    </div>
-
-    <div class="contact-item">
-      <span class="contact-label">Phone:</span> 
-      <a href="tel:+1234567890">+1 (234) 567-890</a>
-    </div>
-
-    <div class="contact-item">
-      <span class="contact-label">Address:</span> 
-      123 Main Street, Cityville, Country
-    </div>
-
   </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Get values
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+
+      // Display them
+      document.getElementById("displayName").textContent = name;
+      document.getElementById("displayEmail").textContent = email;
+      document.getElementById("displayEmail").href = "mailto:" + email;
+      document.getElementById("displayPhone").textContent = phone;
+      document.getElementById("displayPhone").href = "tel:" + phone;
+      document.getElementById("displayAddress").textContent = address;
+
+      // Show the card
+      document.getElementById("contactCard").style.display = "block";
+
+      // Scroll smoothly to contact card
+      document.getElementById("contactCard").scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
 
 </body>
 </html>
