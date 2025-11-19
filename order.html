@@ -3,18 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Online</title>
+
+  <!-- SEO Improvements -->
+  <title>Order Online | Fresh Meals Delivered | Restaurant</title>
+  <meta name="description" content="Order delicious meals online and get fast delivery. Choose from burgers, pasta, seafood, salads, desserts, and more.">
+  <meta name="keywords" content="order food online, delivery, restaurant delivery, online menu, burgers, pasta, seafood, desserts">
+  <meta name="author" content="Your Restaurant Name">
+
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80") no-repeat center center/cover;
+      background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80") 
+        no-repeat center center/cover;
       background-attachment: fixed;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      animation: fadeInBody 1.5s ease;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     body::before {
@@ -26,6 +39,7 @@
       z-index: -1;
     }
 
+    /* Main Card */
     #order {
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(12px);
@@ -34,10 +48,19 @@
       padding: 40px;
       text-align: center;
       max-width: 500px;
-      margin: auto;
       border-radius: 16px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.3);
       color: #fff;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slideUp 1.2s ease forwards 0.5s;
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h2 {
@@ -69,14 +92,25 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
 
-    /* Order form styles */
+    /* Form */
     #orderForm {
       display: none;
       margin-top: 20px;
       text-align: left;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
     }
 
-    #orderForm input, #orderForm textarea, #orderForm select {
+    #orderForm.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #orderForm input,
+    #orderForm textarea,
+    #orderForm select {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -94,15 +128,16 @@
 
   <section id="order">
     <h2>Order Online</h2>
-    <p>Order via our delivery partners and enjoy at home.</p>
+    <p>Order via our delivery partners and enjoy fresh meals at home.</p>
     <button class="btn" id="showFormBtn">Order Now</button>
 
     <form id="orderForm">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required>
-      <textarea name="address" placeholder="Delivery Address" rows="3" required></textarea>
-      <select name="menuItem" required>
+      <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+      <input type="email" name="email" placeholder="Email" required aria-label="Email">
+      <input type="tel" name="phone" placeholder="Phone Number" required aria-label="Phone Number">
+      <textarea name="address" placeholder="Delivery Address" rows="3" required aria-label="Delivery Address"></textarea>
+
+      <select name="menuItem" required aria-label="Select Menu Item">
         <option value="">Select Item</option>
         <option value="Burger">Signature Burger</option>
         <option value="Salmon">Grilled Salmon</option>
@@ -111,6 +146,7 @@
         <option value="Pasta">Spaghetti Carbonara</option>
         <option value="Cake">Chocolate Lava Cake</option>
       </select>
+
       <button type="submit" class="btn">Place Order</button>
     </form>
   </section>
@@ -120,15 +156,15 @@
     const orderForm = document.getElementById('orderForm');
 
     showFormBtn.addEventListener('click', () => {
-      orderForm.style.display = orderForm.style.display === 'block' ? 'none' : 'block';
-      showFormBtn.textContent = orderForm.style.display === 'block' ? 'Hide Form' : 'Order Now';
+      orderForm.classList.toggle('show');
+      showFormBtn.textContent = orderForm.classList.contains('show') ? 'Hide Form' : 'Order Now';
     });
 
     orderForm.addEventListener('submit', (e) => {
       e.preventDefault();
       alert('Thank you! Your order has been placed.');
       orderForm.reset();
-      orderForm.style.display = 'none';
+      orderForm.classList.remove('show');
       showFormBtn.textContent = 'Order Now';
     });
   </script>
