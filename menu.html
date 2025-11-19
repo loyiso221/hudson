@@ -3,7 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Menu</title>
+
+  <!-- SEO -->
+  <title>Restaurant Menu | Starters, Mains, Drinks & Desserts</title>
+  <meta name="description" content="Explore our delicious restaurant menu featuring starters, mains, drinks and desserts. Fresh ingredients, beautiful presentation, premium taste."/>
+  <meta name="keywords" content="restaurant menu, food menu, starters, mains, drinks, desserts, fine dining"/>
+  <meta name="author" content="Your Restaurant Name">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "Menu",
+      "name": "Restaurant Menu",
+      "url": "https://yourwebsite.com/menu",
+      "hasMenuSection": [
+          { "@type": "MenuSection", "name": "Starters" },
+          { "@type": "MenuSection", "name": "Mains" },
+          { "@type": "MenuSection", "name": "Drinks" },
+          { "@type": "MenuSection", "name": "Desserts" }
+      ]
+  }
+  </script>
+
   <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -19,14 +41,18 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.55);
       z-index: -1;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
     }
 
     #menu {
       max-width: 1100px;
       margin: auto;
       padding: 60px 20px;
+      animation: fadeUp 1.2s ease forwards;
+      opacity: 0;
     }
 
     h2 {
@@ -40,155 +66,6 @@
     .filters {
       text-align: center;
       margin-bottom: 40px;
-    }
+      a
 
-    .filters button {
-      background: rgba(255,255,255,0.2);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
 
-    .filters button:hover, .filters button.active {
-      background: rgba(255,255,255,0.4);
-      transform: scale(1.05);
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .menu-item {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.3);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      text-align: center;
-    }
-
-    .menu-item:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-    }
-
-    .menu-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      transition: transform 0.4s ease;
-    }
-
-    .menu-item:hover img {
-      transform: scale(1.08);
-    }
-
-    .menu-item h3 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      color: #fff;
-    }
-
-    .menu-item p {
-      color: #f1f1f1;
-      font-size: 1rem;
-      margin-top: 8px;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
-</head>
-<body>
-
-  <section id="menu">
-    <h2>🍽️ Our Special Menu</h2>
-
-    <!-- Filter Buttons -->
-    <div class="filters">
-      <button class="filter-btn active" data-category="all">All</button>
-      <button class="filter-btn" data-category="starters">Starters</button>
-      <button class="filter-btn" data-category="mains">Mains</button>
-      <button class="filter-btn" data-category="drinks">Drinks</button>
-      <button class="filter-btn" data-category="desserts">Desserts</button>
-    </div>
-
-    <div class="menu-grid">
-      <!-- Starters -->
-      <div class="menu-item" data-category="starters">
-        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Salad">
-        <h3>Caesar Salad</h3>
-        <p>Crisp romaine, parmesan, house dressing - R180</p>
-      </div>
-
-      <!-- Mains -->
-      <div class="menu-item" data-category="mains">
-        <img src="https://images.unsplash.com/photo-1606756790124-21ecb9a83a5b" alt="Burger">
-        <h3>Signature Burger</h3>
-        <p>Juicy beef patty, cheddar, house sauce, brioche bun - R220</p>
-      </div>
-      <div class="menu-item" data-category="mains">
-        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Salmon">
-        <h3>Grilled Salmon</h3>
-        <p>Lemon butter glaze, seasonal vegetables - R250</p>
-      </div>
-      <div class="menu-item" data-category="mains">
-        <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d" alt="Pasta">
-        <h3>Spaghetti Carbonara</h3>
-        <p>Classic Italian pasta with creamy sauce and pancetta - R200</p>
-      </div>
-
-      <!-- Drinks -->
-      <div class="menu-item" data-category="drinks">
-        <img src="https://images.unsplash.com/photo-1617196035304-913b3dbfc716" alt="Cocktail">
-        <h3>Craft Cocktails</h3>
-        <p>Locally inspired spirits and mixers - R180</p>
-      </div>
-
-      <!-- Desserts -->
-      <div class="menu-item" data-category="desserts">
-        <img src="https://images.unsplash.com/photo-1603074066049-22e8c4e8cfed" alt="Chocolate Cake">
-        <h3>Chocolate Lava Cake</h3>
-        <p>Warm chocolate cake with molten center and vanilla ice cream - R150</p>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const menuItems = document.querySelectorAll('.menu-item');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const category = btn.getAttribute('data-category');
-
-        menuItems.forEach(item => {
-          if (category === 'all' || item.getAttribute('data-category') === category) {
-            item.classList.remove('hidden');
-          } else {
-            item.classList.add('hidden');
-          }
-        });
-      });
-    });
-  </script>
-
-</body>
-</html>
