@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- SEO IMPROVEMENTS -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog Section</title>
+  <meta name="description" content="Latest news, dining updates, chef specials and events from Hudson Bar & Grill.">
+  <meta name="keywords" content="Hudson Bar & Grill Blog, food blog, restaurant news, chef specials, live jazz events">
+
+  <title>Blog Section | Hudson Bar & Grill</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -25,6 +31,7 @@
       box-shadow: 0 8px 25px rgba(0,0,0,0.2);
       backdrop-filter: blur(5px);
       animation: fadeIn 1s ease;
+      overflow: hidden;
     }
 
     #blog h2 {
@@ -32,36 +39,55 @@
       color: #222;
       font-size: 2rem;
       margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 0.2s;
     }
 
     article {
       margin-bottom: 25px;
       border-bottom: 1px solid #ddd;
       padding-bottom: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding-top: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
     }
 
+    /* Hover lift */
     article:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
+    /* Animated reveal class */
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
     article h3 {
       margin: 0;
-      color: #444;
-      font-size: 1.2rem;
+      color: #333;
+      font-size: 1.25rem;
+      font-weight: bold;
     }
 
     article p {
       color: #555;
       line-height: 1.6;
+      margin-top: 5px;
     }
 
+    /* Newsletter Form */
     form {
       margin-top: 30px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
     }
 
     form h4 {
@@ -102,9 +128,25 @@
       transform: scale(1.05);
     }
 
+    /* Fade animations */
     @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      #blog {
+        padding: 20px;
+      }
+      #blog h2 {
+        font-size: 1.7rem;
+      }
     }
   </style>
 </head>
@@ -113,22 +155,38 @@
   <section id="blog">
     <h2>Latest from the Blog</h2>
 
-    <article>
+    <article class="reveal">
       <h3>Chef's Picks for Fall</h3>
       <p>Warm up with our seasonal menu, curated by Chef James.</p>
     </article>
 
-    <article>
+    <article class="reveal">
       <h3>Live Jazz Nights</h3>
       <p>Join us Fridays at 8pm for smooth music & dining.</p>
     </article>
 
-    <form action="#">
+    <form class="reveal">
       <h4>Subscribe to Newsletter</h4>
       <input type="email" placeholder="Enter your email" required />
       <button type="submit">Subscribe</button>
     </form>
   </section>
 
+  <script>
+    // Smooth scroll reveal for articles + form
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
+
