@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Info</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO Improvements -->
+  <title>Contact Information Form | Save & Display Contact Details</title>
+  <meta name="description" content="A modern contact information form with animations. Enter your details and instantly generate a digital contact card." />
+  <meta name="keywords" content="contact form, digital contact card, save contact info, interactive form, animated form" />
+  <meta name="author" content="Your Name" />
+
+  <!-- Schema Markup for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Information Page",
+    "description": "A page where users can enter and generate a digital contact card.",
+    "url": "https://yourwebsite.com/contact"
+  }
+  </script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -25,9 +42,9 @@
       width: 100%;
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.3);
-      animation: fadeIn 1s ease-in-out;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
     }
 
     h2 {
@@ -39,6 +56,8 @@
 
     form {
       margin-bottom: 25px;
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
     }
 
     input {
@@ -56,6 +75,7 @@
     input:focus {
       background: rgba(255,255,255,0.9);
       box-shadow: 0 0 10px rgba(0,123,255,0.5);
+      transform: scale(1.02);
     }
 
     button {
@@ -73,7 +93,8 @@
 
     button:hover {
       background: rgba(0,86,179,0.9);
-      transform: scale(1.05);
+      transform: scale(1.08);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
 
     .contact-card {
@@ -83,10 +104,11 @@
       background: rgba(255,255,255,0.2);
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.3);
       color: #fff;
-      animation: fadeIn 1s ease-in-out;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
     }
 
     .contact-item {
@@ -112,9 +134,17 @@
       color: #ffc107;
     }
 
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -123,18 +153,18 @@
   <div class="container">
     <h2>Enter Your Contact Info</h2>
 
-    <!-- User Input Form -->
+    <!-- Contact Form -->
     <form id="contactForm">
-      <input type="text" id="name" placeholder="Enter your name" required>
-      <input type="email" id="email" placeholder="Enter your email" required>
-      <input type="tel" id="phone" placeholder="Enter your phone number" required>
-      <input type="text" id="address" placeholder="Enter your address" required>
+      <input type="text" id="name" placeholder="Enter your name" required aria-label="Name">
+      <input type="email" id="email" placeholder="Enter your email" required aria-label="Email">
+      <input type="tel" id="phone" placeholder="Enter your phone number" required aria-label="Phone Number">
+      <input type="text" id="address" placeholder="Enter your address" required aria-label="Address">
       <button type="submit">Save Contact Info</button>
     </form>
 
-    <!-- Contact Info Card -->
+    <!-- Contact Display Card -->
     <div class="contact-card" id="contactCard" style="display:none;">
-      <h2>Contact Information</h2>
+      <h2>Contact Details</h2>
       <div class="contact-item">
         <span class="contact-label">Name:</span> <span id="displayName"></span>
       </div>
@@ -154,13 +184,13 @@
     document.getElementById("contactForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      // Get values
+      // Collect values
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const phone = document.getElementById("phone").value;
       const address = document.getElementById("address").value;
 
-      // Display them
+      // Insert into card
       document.getElementById("displayName").textContent = name;
       document.getElementById("displayEmail").textContent = email;
       document.getElementById("displayEmail").href = "mailto:" + email;
@@ -168,11 +198,13 @@
       document.getElementById("displayPhone").href = "tel:" + phone;
       document.getElementById("displayAddress").textContent = address;
 
-      // Show the card
-      document.getElementById("contactCard").style.display = "block";
+      // Show card with animation
+      const card = document.getElementById("contactCard");
+      card.style.display = "block";
+      card.style.animation = "fadeInUp 1s ease forwards";
 
-      // Scroll smoothly to contact card
-      document.getElementById("contactCard").scrollIntoView({ behavior: "smooth" });
+      // Smooth scroll
+      card.scrollIntoView({ behavior: "smooth" });
     });
   </script>
 
