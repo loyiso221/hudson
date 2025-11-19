@@ -2,10 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- SEO IMPROVEMENTS -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HUDSON BAR & GRILL</title>
+<meta name="description" content="Hudson Bar & Grill – Modern cuisine, craft cocktails, riverside dining, reservations, online ordering, promotions, and blog updates.">
+<meta name="keywords" content="Hudson Bar & Grill, bar, restaurant, grill, cocktails, Cape Town dining, reservations, online ordering">
+<meta name="author" content="Hudson Bar & Grill">
+
+<title>HUDSON BAR & GRILL | Modern Cuisine & Craft Cocktails</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
 <style>
+/* ===========================
+   Root Variables
+=========================== */
 :root {
   --primary:#fff;
   --accent:#FF6F00;
@@ -14,77 +25,168 @@
   --body-font: 'Open Sans', sans-serif;
   --header-font: 'Playfair Display', serif;
 }
+
+/* Global */
 *{box-sizing:border-box;margin:0;padding:0;}
 body{
   font-family: var(--body-font);
-  background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80") no-repeat center center/cover;
+  background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80") 
+  no-repeat center center/cover;
   background-attachment: fixed;
   color:#fff;
   line-height:1.6;
+  overflow-x:hidden;
 }
 body::before{
   content:"";
   position:fixed;top:0;left:0;width:100%;height:100%;
   background: rgba(0,0,0,0.5); z-index:-1;
 }
+
+/* ===========================
+   Fade-in Animations
+=========================== */
+.fade-in {
+  opacity:0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+.fade-in.visible {
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* Slide-in Left */
+.slide-left {
+  opacity:0;
+  transform: translateX(-60px);
+  transition: all 1s ease;
+}
+.slide-left.visible {
+  opacity:1;
+  transform: translateX(0);
+}
+
+/* Slide-in Right */
+.slide-right {
+  opacity:0;
+  transform: translateX(60px);
+  transition: all 1s ease;
+}
+.slide-right.visible {
+  opacity:1;
+  transform: translateX(0);
+}
+
+/* ===========================
+   Header / Navbar
+=========================== */
 header{
   text-align:center; padding: 20px;
   background: rgba(0,0,0,0.6); backdrop-filter:blur(6px);
 }
 header h1{font-family: var(--header-font); font-size: 2.5rem;}
 header p{margin-top:5px;color:#ddd;}
+
 nav{
-  text-align:center; padding:10px; background: rgba(0,0,0,0.6); backdrop-filter:blur(6px);
+  text-align:center; padding:10px; background: rgba(0,0,0,0.6); 
+  backdrop-filter:blur(6px);
   position:sticky; top:0; z-index:999;
 }
 nav a{
-  color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; text-transform:uppercase; font-size:0.9rem;
-  transition: color 0.3s;
+  color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; 
+  text-transform:uppercase; font-size:0.9rem;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
-nav a:hover{color: var(--accent);}
+nav a:hover{
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+/* ===========================
+   Hero Section
+=========================== */
 .hero{
-  height:80vh; display:flex; align-items:center; justify-content:center; text-align:center;
+  height:80vh; display:flex; align-items:center; justify-content:center; 
+  text-align:center;
 }
 .hero div{
   background: rgba(0,0,0,0.5); padding:30px; border-radius:12px;
+  animation: fadeInHero 1.5s ease forwards;
 }
-.hero h2{font-family: var(--header-font); font-size:2.5rem;}
-.hero p{margin:10px 0 20px;}
+@keyframes fadeInHero {
+  from {opacity:0; transform:scale(0.95);}
+  to {opacity:1; transform:scale(1);}
+}
+
+/* Button */
 .btn{
   background: var(--accent); color:#fff; padding:12px 24px; border:none;
-  text-transform:uppercase; font-weight:bold; cursor:pointer; transition:0.3s;
-  border-radius:10px;
+  text-transform:uppercase; font-weight:bold; cursor:pointer;
+  border-radius:10px; transition:0.3s;
 }
-.btn:hover{background:#e55d00; transform:scale(1.05);}
+.btn:hover{
+  background:#e55d00; transform:scale(1.1) rotate(1deg);
+}
+
+/* ===========================
+   Cards
+=========================== */
 section{padding:50px 20px; max-width:1100px; margin:auto;}
-h2{font-family: var(--header-font); font-size:2rem; margin-bottom:20px; color:#fff;}
+h2{font-family: var(--header-font); font-size:2rem; margin-bottom:20px;}
+
 .glass-card{
   background: var(--glass-bg); border:1px solid var(--glass-border);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border-radius:16px; padding:20px; margin-bottom:20px;
   box-shadow:0 8px 30px rgba(0,0,0,0.3);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.glass-card:hover{transform: translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+.glass-card:hover{
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:0 12px 40px rgba(0,0,0,0.4);
+}
+
+/* Menu Grid */
 .menu-grid{
   display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px;
 }
 .menu-item{border-left:5px solid var(--accent);}
-ul{list-style:none; padding:0;}
-ul li{margin-bottom:15px; padding:12px; border-radius:12px; background: rgba(255,255,255,0.15);}
+
+/* ===========================
+   Forms
+=========================== */
 form{
   display:grid; gap:15px; max-width:600px; margin:auto;
 }
-input, textarea, select, button{padding:12px; border-radius:10px; border:none; font-family: var(--body-font);}
-button[type="submit"]{background:var(--accent); color:#fff; cursor:pointer; font-weight:bold; text-transform:uppercase; transition:0.3s;}
-button[type="submit"]:hover{background:#e55d00; transform:scale(1.05);}
-footer{background: rgba(0,0,0,0.6); text-align:center; padding:30px; margin-top:50px; border-radius:12px;}
-@media(max-width:768px){nav{font-size:0.85rem;} .hero h2{font-size:2rem;}}
+input, textarea, select, button{
+  padding:12px; border-radius:10px; border:none; 
+  font-family: var(--body-font);
+}
+button[type="submit"]{
+  background:var(--accent); color:#fff; cursor:pointer; font-weight:bold;
+  text-transform:uppercase; transition:0.3s;
+}
+button[type="submit"]:hover{
+  background:#e55d00; transform:scale(1.05);
+}
+
+/* Footer */
+footer{
+  background: rgba(0,0,0,0.6); text-align:center; padding:30px; 
+  margin-top:50px; border-radius:12px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  nav{font-size:0.85rem;} 
+  .hero h2{font-size:2rem;}
+}
 </style>
 </head>
 <body>
 
-<header>
+<header class="fade-in">
   <h1>HUDSON BAR & GRILL</h1>
   <p>Where Flavor Meets the Hudson</p>
 </header>
@@ -106,31 +208,34 @@ footer{background: rgba(0,0,0,0.6); text-align:center; padding:30px; margin-top:
   </div>
 </section>
 
-<section id="menu">
+<section id="menu" class="fade-in">
   <h2>Our Menu</h2>
   <div class="menu-grid">
-    <div class="glass-card menu-item">
+    <div class="glass-card menu-item slide-left">
       <h3>Signature Burger</h3>
       <p>Beef patty, cheddar, house sauce, brioche bun - R220</p>
     </div>
-    <div class="glass-card menu-item">
+
+    <div class="glass-card menu-item fade-in">
       <h3>Grilled Salmon</h3>
       <p>Lemon butter glaze, seasonal vegetables - R250</p>
     </div>
-    <div class="glass-card menu-item">
+
+    <div class="glass-card menu-item slide-right">
       <h3>Craft Cocktails</h3>
       <p>Locally inspired spirits and mixers - R180</p>
     </div>
-    <div class="glass-card menu-item">
+
+    <div class="glass-card menu-item fade-in">
       <h3>Caesar Salad</h3>
       <p>Crisp romaine, parmesan, house dressing - R180</p>
     </div>
   </div>
 </section>
 
-<section id="promotions">
+<section id="promotions" class="fade-in">
   <h2>Promotions</h2>
-  <div class="glass-card">
+  <div class="glass-card slide-left">
     <ul>
       <li><strong>Happy Hour:</strong> 5-7pm – 50% off drinks</li>
       <li><strong>Brunch:</strong> Free mimosa on weekends</li>
@@ -138,9 +243,9 @@ footer{background: rgba(0,0,0,0.6); text-align:center; padding:30px; margin-top:
   </div>
 </section>
 
-<section id="reservation">
+<section id="reservation" class="fade-in">
   <h2>Reserve a Table</h2>
-  <form id="reservationForm" class="glass-card">
+  <form id="reservationForm" class="glass-card slide-right">
     <input type="text" placeholder="Full Name" required>
     <input type="email" placeholder="Email Address" required>
     <input type="date" required>
@@ -151,7 +256,7 @@ footer{background: rgba(0,0,0,0.6); text-align:center; padding:30px; margin-top:
   </form>
 </section>
 
-<section id="order">
+<section id="order" class="fade-in">
   <h2>Order Online</h2>
   <div class="glass-card" style="text-align:center;">
     <p>Order via our delivery partners and enjoy at home.</p>
@@ -174,17 +279,19 @@ footer{background: rgba(0,0,0,0.6); text-align:center; padding:30px; margin-top:
   </div>
 </section>
 
-<section id="blog">
+<section id="blog" class="fade-in">
   <h2>Latest from the Blog</h2>
   <div class="glass-card">
-    <article>
+    <article class="slide-left">
       <h3>Chef's Picks for Fall</h3>
       <p>Warm up with our seasonal menu, curated by Chef James.</p>
     </article>
-    <article>
+
+    <article class="slide-right">
       <h3>Live Jazz Nights</h3>
       <p>Join us Fridays at 8pm for smooth music & dining.</p>
     </article>
+
     <form>
       <input type="email" placeholder="Enter your email" required>
       <button type="submit">Subscribe</button>
@@ -192,14 +299,36 @@ footer{background: rgba(0,0,0,0.6); text-align:center; padding:30px; margin-top:
   </div>
 </section>
 
-<footer>
+<footer class="fade-in">
   <p>&copy; 2025 HUDSON BAR & GRILL. All rights reserved.</p>
 </footer>
 
+<!-- ===========================
+     JavaScript: Scroll Reveal
+=========================== -->
 <script>
-const reservationForm = document.getElementById('reservationForm');
-reservationForm.addEventListener('submit', e => { e.preventDefault(); alert('Thank you! Your table has been reserved.'); reservationForm.reset(); });
+// Scroll reveal animation
+const elements = document.querySelectorAll('.fade-in, .slide-left, .slide-right');
 
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {threshold: 0.2});
+
+elements.forEach(el => observer.observe(el));
+
+// Reservation Form
+const reservationForm = document.getElementById('reservationForm');
+reservationForm.addEventListener('submit', e => { 
+  e.preventDefault(); 
+  alert('Thank you! Your table has been reserved.'); 
+  reservationForm.reset(); 
+});
+
+// Order Form
 const showOrderBtn = document.getElementById('showOrderForm');
 const orderForm = document.getElementById('orderForm');
 showOrderBtn.addEventListener('click', ()=>{
@@ -214,5 +343,6 @@ orderForm.addEventListener('submit', e=>{
   showOrderBtn.textContent='Order Now';
 });
 </script>
+
 </body>
 </html>
