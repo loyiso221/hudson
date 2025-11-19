@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Promotions</title>
+
+  <!-- SEO Improvements -->
+  <title>Promotions | Restaurant Deals & Specials</title>
+  <meta name="description" content="Discover our latest restaurant promotions including happy hour, brunch specials, weekend deals, and exclusive discounts.">
+  <meta name="keywords" content="restaurant promotions, food specials, happy hour, deals, discounts, brunch, weekend specials">
+  <meta name="author" content="Your Restaurant Name">
+
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: url("https://images.unsplash.com/photo-1555992336-03a23c5f0f19?auto=format&fit=crop&w=1600&q=80") no-repeat center center/cover;
+      background: url("https://images.unsplash.com/photo-1555992336-03a23c5f0f19?auto=format&fit=crop&w=1600&q=80") 
+        no-repeat center center/cover;
       background-attachment: fixed;
       color: #fff;
       min-height: 100vh;
@@ -17,16 +24,22 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
+      animation: fadeInBody 1.5s ease;
     }
 
-    /* Dark overlay to make text readable */
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Dark overlay */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.55);
       z-index: -1;
     }
 
@@ -38,15 +51,25 @@
       max-width: 500px;
       margin: auto;
       padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      transform: translateY(40px);
+      opacity: 0;
+      animation: slideUp 1.2s ease forwards 0.5s;
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     #promotions h2 {
       text-align: center;
       margin-bottom: 25px;
-      font-size: 2rem;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      font-size: 2.3rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     }
 
     #promotions ul {
@@ -54,6 +77,7 @@
       padding: 0;
     }
 
+    /* Animated promo items */
     #promotions li {
       background: rgba(255, 255, 255, 0.25);
       margin-bottom: 15px;
@@ -61,11 +85,24 @@
       border-radius: 12px;
       color: #fff;
       font-size: 1.1rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+      animation: fadeInItem 0.8s ease forwards;
+      opacity: 0;
     }
 
+    #promotions li:nth-child(1) { animation-delay: 0.6s; }
+    #promotions li:nth-child(2) { animation-delay: 0.8s; }
+    #promotions li:nth-child(3) { animation-delay: 1s; }
+
+    @keyframes fadeInItem {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hover effect */
     #promotions li:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.03);
+      background: rgba(255, 255, 255, 0.35);
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
